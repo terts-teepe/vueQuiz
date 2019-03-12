@@ -30,7 +30,6 @@ export default {
           questionsAnswers: [],
           correctAnswer: [],
           questionIndex: 0,
-          score: 0,
           category: '',
           difficulty:'',
           amount: '',
@@ -46,25 +45,20 @@ export default {
     },
     methods: {
         startQuiz: function(event) {
-            this.questionIndex += 1
-            let i = 0
             let vm = this
+            vm.questionIndex += 1
             fetch(vm.title)
             .then((response) => {
                 return response.json().then((json) => {
-                    for (i=0; i<json.results.length; i++) {
+                    for (let i=0; i<json.results.length; i++) {
 
                       vm.questions.push(json.results[i].question)
                       vm.correctAnswer.push(json.results[i].correct_answer)
                       vm.questionsAnswers.push([json.results[i].correct_answer, json.results[i].incorrect_answers[0], json.results[i].incorrect_answers[1], json.results[i].incorrect_answers[2]])
                       
                     }
-                    console.log(vm.questions)
-                    console.log(vm.correctAnswer)
-                    console.log(vm.questionsAnswers)
                 })
             }) 
-            // eventBus.$emit('passQuestions', {'questionIndex':this.questionIndex, 'questions':this.questions});
             this.$emit('passData', {
                 'questionIndex':this.questionIndex, 
                 'questions':this.questions,
