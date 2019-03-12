@@ -25,24 +25,24 @@
       questionsAnswers: Array,
       questions: Array,
       questionIndex: Number,
-      correctAnswer: Array,
-      score: Number
+      correctAnswer: Array
+    },
+    data: function () {
+      return {
+        score: 0
+      }
     },
     methods: {
       checkAnswer: function(e) {
-        console.log('questions.length: ' + this.questions.length)
-        console.log('questionIndex: ' + this.questionIndex)
         const buttonValue = e.target.value;
-
-        console.log(buttonValue)
-        console.log(this.correctAnswer[this.questionIndex - 1])
-
         if (buttonValue === this.correctAnswer[this.questionIndex - 1]) {
           this.score += 1
         }
         this.questionIndex += 1
-        this.$emit('questionIndexBackToParent', this.questionIndex); 
-        
+        this.$emit('questionIndexBackToParent', {
+          'questionIndex':this.questionIndex,
+          'score':this.score
+        });         
       },
       //Function to shuffle the array which contains the correct and wrong answers
       randomList(array) {

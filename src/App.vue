@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div v-if="questionIndex === 0">
+      <!--Get values from component-one:  -->
       <component-one @passData=
         "questionIndex = $event.questionIndex, 
         questions = $event.questions,
@@ -8,14 +9,16 @@
         correctAnswer=$event.correctAnswer">
       </component-one>
     </div>
-
+    <!-- Send the data that is reveived from componen one towards component two 
+    and get the score and questionIndex back from component two to the parent. -->
     <div v-else-if="questions.length - questionIndex > -1">
-      <component-two @questionIndexBackToParent="questionIndex = $event"
+      <component-two @questionIndexBackToParent=
+                      "questionIndex = $event.questionIndex,
+                       score = $event.score"
                      :questions="questions"
                      :questionsAnswers="questionsAnswers"
                      :correctAnswer="correctAnswer"
-                     :questionIndex="questionIndex"
-                     :score="score">
+                     :questionIndex="questionIndex">
       </component-two>
     </div>
 
@@ -41,7 +44,7 @@ export default {
       questionsAnswers: [],
       correctAnswer: [],
       questionIndex: 0,
-      score: 0
+      score: ''
     }
   },
   components: {
