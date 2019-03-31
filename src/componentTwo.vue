@@ -1,19 +1,20 @@
 <template>
-  <div>
-    <ul>
-      <li>
-        <template>
-          <p>Question {{questionIndex}}: {{questions[questionIndex - 1]}}</p>
-        </template>
-        <button v-for="answers in randomList(questionsAnswers[questionIndex - 1])"
-                :value = answers
-                @click="checkAnswer($event)"
-                type="button">
-        {{answers}}
-        </button>
-        <br></br>
-      </li>
-    </ul>
+  <div id="quiz" class="container buttons">
+    <img  class="box imageOne" 
+          src="./assets/img/emma.png" 
+          id="imgStyle"/>
+    <template>
+      <h2>Question: {{questionIndex}}</h2>
+      <p id="question">{{questions[questionIndex - 1]}}</p>
+    </template>
+    <button v-for="(answers, index) in randomList(questionsAnswers[questionIndex - 1])"
+              :value = answers
+              @click="checkAnswer($event)"
+              type="button"
+              id="buttonChoices">
+    {{answers}}
+    </button>
+    <br></br>
     <p>{{questionIndex}} / {{questions.length}}</p>
   </div>
 </template>

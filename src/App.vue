@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="grid" id="app">
     <div v-if="questionIndex === 0">
       <!--Get values from component-one:  -->
       <component-one @passData=
@@ -22,10 +22,16 @@
       </component-two>
     </div>
 
-    <div v-else>
-      <p>quiz is finished</p>
-      <p>You scored {{score}} out of {{questions.length}} points</p>
-      <button @click="restartQuiz">Play Again!</button>
+    <div v-else class="container">
+      <div class="containerTwo">
+        <img class="box imageOne" src="./assets/img/emma.png" id="emma"/>
+        <div class="talk-bubble tri-right left-in round box">
+          <div class="talktext">
+            <p>You scored {{score}} out of {{questions.length}} points</p>
+          </div>
+        </div>
+      </div>
+      <button id='myButton' @click="restartQuiz">Play Again!</button>
     </div>
 
   </div>
@@ -65,7 +71,7 @@ export default {
 </script>
 
 <style>
-
+  @import './assets/styles.css';
 </style>
 
 

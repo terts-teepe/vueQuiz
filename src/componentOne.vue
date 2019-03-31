@@ -1,21 +1,27 @@
 <template>
-  <form id = "startQuiz" name = "quiz" class="box">
-    <p>Kies het aantal vragen</p>
-    <select v-model="amount" class="form-control" name="amount">
-      <option v-for="amount in 20" :value="amount">{{amount}}</option>{{amount}}
-    </select>
-    <p>Kies een categorie</p>
-    <select v-model="category">
-        <option v-for="(item, key) in categories" :value="item">{{key}}</option>
-    </select>
-    <p>Kies de moeilijkheidsgraad</p>
-    <select v-model="difficulty">
-        <option value="easy">Makkelijk</option>
-        <option value="medium">Gemiddeld</option>
-        <option value="hard">Moeilijk</option>
-    </select>
-    <button @click="startQuiz">Start Quiz!</button>
-  </form> 
+  <div class="containerThree">
+    <img class="box imageOne" src="./assets/img/emma.png" id="emma"/>
+    <form id = "startQuiz" name = "quiz" class="box">
+      <p>Kies het aantal vragen</p>
+      <select v-model="amount" class="form-control" name="amount" id="amount">
+        <option v-for="amount in 20" :value="amount">{{amount}}</option>{{amount}}
+      </select>
+      <p>Kies een categorie</p>
+      <select v-model="category" id="category">
+          <option v-for="(item, key) in categories" :value="item">{{key}}</option>
+      </select>
+      <p>Kies de moeilijkheidsgraad</p>
+      <select v-model="difficulty" id="difficulty">
+          <option value="easy">Makkelijk</option>
+          <option value="medium">Gemiddeld</option>
+          <option value="hard">Moeilijk</option>
+      </select>
+      <div id="letsPlay" @click="startQuiz">
+        Start Quiz!
+      </div>
+      <!-- <button id="letsPlay" @click="startQuiz">Start Quiz!</button> -->
+    </form>
+  </div> 
 </template>
 
 <script type="text/javascript">
